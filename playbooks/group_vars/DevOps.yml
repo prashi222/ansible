@@ -1,0 +1,9 @@
+---
+    users:
+      - devopsuser4
+      - devopsuser5
+      - devopsuser6
+    files:
+      - devopsfile4
+      - devopsfile5
+      - devopsfile6

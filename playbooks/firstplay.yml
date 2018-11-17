@@ -1,0 +1,16 @@
+---
+- name: To install the package
+  hosts: all
+  remote_user: ansibleusr
+  become: true
+  tasks:
+    - name: To install the httpd
+      yum: name=httpd state=latest
+    - name: To restart the service
+      service: name=httpd state=restarted enabled=true
+    - name: To configure the http server home page
+      file: path=/var/www/html/index.html state=touch
+    - name: To copy the content to the destination
+      copy: content="This is my webserver\n" dest=/var/www/html/index.html
+    - name: To copy the content to the destination
+      copy: content="This is my webserver" dest=/var/www/html/index.html

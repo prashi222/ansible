@@ -1,0 +1,9 @@
+---
+    users:
+      - user4
+      - user5
+      - user6
+    files:
+      - file4
+      - file5
+      - file6

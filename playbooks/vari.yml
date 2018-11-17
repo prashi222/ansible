@@ -1,0 +1,32 @@
+---
+ - name: To perform the iteration
+   hosts: all
+   remote_user: ansibleusr
+   become: true
+   vars: 
+    users:
+      - user1
+      - user2
+      - user3
+    files:
+      - file1
+      - file2
+      - file3
+    pkgs:
+      - vsftpd
+      - screen
+      - ntp
+      - mariadb
+   tasks:
+   - name: To Create 3 new users
+     user: name={{ item }} state=present
+     with_items: "{{ users }}"
+   - name: To create files
+     file: path=/var/tmp/{{ item }} state=touch
+     with_items: "{{ files }}"
+   - name: Install packages
+     yum: name={{ item }} state=latest
+     with_items: "{{ pkgs }}"
+   - name: Start the services
+     service: name={{ item }} state=restarted
+     with_items: "{{ pkgs }}"
