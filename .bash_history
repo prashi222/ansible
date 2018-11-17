@@ -133,3 +133,32 @@ ll
 ansible-playbook group_vari.yml
 cd
 exit
+cd ~
+ansible ip-172-31-38-67.ec2.internal -m facter
+setup
+ll
+cd playbooks
+ansible all -m setup
+ansible all -m shell -a "rpm -qa | grep vsftp"
+ansible all -m shell -a "rpm -qa | grep vsftp" warn=False
+ansible all --warn=False -m shell -a "rpm -qa | grep vsftp"
+ansible all warn=False -m shell -a "rpm -qa | grep vsftp"
+ansible all -m shell -a "rpm -qa | grep vsftp"
+ansible all -m setup
+ansible all -m setup | grep less
+ansible all -m setup | less
+ansible all -m setup -a "filter=fqdn"
+ansible all -m setup -a "filter=ansible_fqdn"
+ansible all -m setup -a "filter=ansible_dns"
+ansible all -m setup -a "filter=nameservers"
+ansible all -m setup -a "filter=ansible_dns" | grep nameservers
+ansible all -m setup -a "filter=ansible_dns" | grep nameservers \n
+clear
+ansible-playbook group_vari.yml
+vi group_vari.yml
+cp group_vari.yml regsiter_debug.yml
+mv regsiter_debug.yml register_debug.yml
+vi register_debug.yml 
+ansible-playbook register_debug.yml 
+git add -A
+exit
