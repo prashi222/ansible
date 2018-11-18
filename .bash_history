@@ -162,3 +162,82 @@ vi register_debug.yml
 ansible-playbook register_debug.yml 
 git add -A
 exit
+cd ~
+clear
+cd playbooks
+ll
+hostname
+cat /etc/hosts
+exit
+cd ~
+ll
+cd .ssh
+ll
+cat id_rsa.pub
+rm known_hosts 
+ssh ip-172-31-80-192.ec2.internal
+vi /etc/ansible/hosts
+exit
+ansible ip-172-31-80-192.ec2.internal -m ping
+ansible all -m user -a "name=user1" -s
+cd ~
+cd playbooks/
+ll
+ll
+ansible-playbook firstplay.yml
+cat firstplay.yml
+ll
+vi nginx.yml
+ansible-playbook nginx.yml 
+cat register_debug.yml
+cd ~
+clear
+cd playbooks
+vi sudoers.yml
+ansible-playbook sudoers.yml
+vi sudoers.yml 
+vi sudoers.yml 
+ansible-playbook sudoers.yml
+cat sudoers.yml 
+CLEAR
+clear
+ll
+cp sudoers.yml groupsudo.yml
+vi groupsudo.yml 
+ansible-playbook groupsudo.yml 
+vi groupsudo.yml 
+ansible-playbook groupsudo.yml 
+git update -A
+git add -A
+exit
+clear
+git
+git add -A
+cd ~
+cd playbooks
+ll
+git add -A
+git init .
+git status
+git add -A
+git status
+git commit -m "sudoers_conditional"
+git push https://github.com/prashi222/ansible.git
+git push https://github.com/prashi222/ansible.git
+ll
+vi conditional1.yml
+ansible-playbook conditional1.yml 
+ansible-playbook conditional1.yml 
+clear
+git init .
+git add -A
+git status
+git commit -m "newcomitt"
+git config --global user.email "ds.prashanth@yahoo.co.in"
+git config --global user.name "Prashanth"
+git commit -m "newcomitt"
+git push https://github.com/prashi222/ansible.git
+git push https://github.com/prashi222/ansible.git master
+cd ..
+git add -A
+exit

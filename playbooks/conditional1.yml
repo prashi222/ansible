@@ -1,0 +1,11 @@
+---
+- hosts: all
+  remote_user: ansibleusr
+  become: true
+  tasks:
+  - name: To install the package.
+    yum: name=httpd state=latest
+    when: inventory_hostname in groups['DevOps']
+  - name: To install DB Server
+    yum: name=mariadb state=latest
+    when: inventory_hostname in groups['DevOps']

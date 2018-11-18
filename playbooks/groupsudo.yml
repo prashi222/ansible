@@ -1,0 +1,19 @@
+---
+- hosts: all
+  remote_user: ansibleusr
+  become: true
+  vars:
+   sudousers:
+    - sudouser1
+    - sudouser2
+  tasks:
+  - name: To create sudo groups
+    group: name=sudogroup state=present
+  - name: To create sudo users.
+    user: name={{ item }} state=present groups=sudogroup
+    with_items: "{{ sudousers }}"
+  - name: To configure the sudo file
+    lineinfile:
+      path: /etc/sudoers
+      line: "%sudogroup		ALL=(ALL) 	NOPASSWD: ALL"
+      backup: yes
