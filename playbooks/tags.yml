@@ -1,0 +1,27 @@
+---
+- hosts: all
+  remote_user: ansibleusr
+  become: true
+  tasks:
+  - name: To install the package.
+    yum: name=httpd state=latest
+    notify: restart the service
+    tags: http
+
+  - name: To install DB Server
+    yum: name=mariadb state=latest
+    notify: restart the service
+    tags: maria
+
+  - name: To install ftp Server
+    yum: name=vsftpd state=latest
+    notify: restart the service
+    tags: ftp 
+
+  handlers:
+  - name: restart the service
+    service: name=mariadb state=restarted enabled=true
+  - name: httpd
+    service: name=httpd state=restarted enabled=true
+  - name: vsftpd restart
+    service: name=vsftpd state=restarted enabled=true

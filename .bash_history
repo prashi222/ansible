@@ -241,3 +241,42 @@ git push https://github.com/prashi222/ansible.git master
 cd ..
 git add -A
 exit
+cd ~
+cd playbooks
+ll
+clear
+ll
+cat conditional1.yml
+cp conditional1.yml conditional2.yml
+vi conditional2.yml 
+ansible-playbook conditional2.yml
+ll
+cp conditional1.yml taskcntrl.yml
+vi taskcntrl.yml 
+ansible-playbook taskcntrl.yml 
+vi taskcntrl.yml 
+ansible-playbook taskcntrl.yml 
+cat /var/www/html/index.html
+clear
+cp conditional1.yml tags.yml
+vi tags.yml
+ansible-playbook tags.yml --tags ftp
+vi tags.yml 
+ansible-playbook tags.yml --tags ftp
+ansible-playbook tags.yml --tags ftp
+vi tags.yml 
+ansible-playbook tags.yml --tags ftp
+vi tags.yml 
+sftp ec2-user@52.66.199.152
+ll
+mkdir /var/www/html/private
+ll
+ansible-playbook http-auth.yml
+chmod 664 http*
+ll
+chmod 664 htaccess-custom
+chmod 644 htpasswd
+ansible-playbook http-auth.yml
+vi http-auth.yml
+ansible-playbook http-auth.yml
+exit

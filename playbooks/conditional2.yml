@@ -1,0 +1,14 @@
+---
+- hosts: all
+  remote_user: ansibleusr
+  become: true
+  tasks:
+  - name: To install the package.
+    yum: name=httpd_new state=latest
+    ignore_errors: yes
+    register: pkg
+  - name: To display the errors 
+    debug: var=pkg
+  - name: To ensure the old package is there
+    yum: name=httpd state=latest
+    when: pkg is failed
